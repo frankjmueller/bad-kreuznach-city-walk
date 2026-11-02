@@ -4,7 +4,7 @@
 
 SITE_URL = "https://frankjmueller.github.io/bad-kreuznach-city-walk/"
 REPO_URL = "https://github.com/frankjmueller/bad-kreuznach-city-walk"
-VERSION = "v1"
+VERSION = "v2"
 
 # kind: start | stop | bonus
 # bead: Beschriftung der Perle, map: Kurzname für die Karte (Liste = mehrere Zeilen)
@@ -71,7 +71,7 @@ STOPS = [
         lat=49.82776, lon=7.85015, maps="Salinental (Karlshalle) in Google Maps",
     ),
     dict(
-        id="s2", kind="stop", bead="2", map=["Roseninsel"],
+        id="s2", kind="stop", bead="2", map=["Rosen-", "insel"],
         img="roseninsel", pos="center", alt="Springbrunnen und Terrassen auf der Roseninsel vor bewaldeten Hängen",
         eyebrow="Stop 2 · Park an der Nahe",
         title="Roseninsel",
@@ -103,11 +103,43 @@ STOPS = [
         lat=49.8331, lon=7.8497, maps="Roseninsel in Google Maps",
     ),
     dict(
-        id="s3", kind="stop", bead="3", map=["Kurpark"],
+        id="s3", kind="stop", bead="3", map=["Oranien-", "park"],
+        img="oranienpark", pos="center", alt="Eine Bronzefigur im grünen Oranienpark",
+        eyebrow="Stop 3 · Barockgarten",
+        title="Oranienpark",
+        walk="ca. 9 min zu Fuß — der Park liegt zwischen Roseninsel und Kurpark.",
+        body=[
+            "Ein kleiner, symmetrischer <b>Barockgarten</b> (2 Hektar) mit geschwungenen Wegen, rund 120 "
+            "großkronigen Bäumen, Wasserbecken und einem Pergola-Laubengang. Den Namen verdankt er "
+            "<b>Maria von Nassau-Oranien</b>, der niederländischen Frau eines Pfalzgrafen. Bis 1929 stand hier "
+            "das prunkvolle Hotel Oranienhof.",
+            "Ein Stier und die „Schwebende Göttin“ der Bildhauerfamilie Cauer setzen künstlerische Akzente.",
+        ],
+        boxes=[("funfact", "<b>📖 Fun Fact:</b> Im Jahr <b>1895</b> spazierte hier der Schriftsteller "
+                           "<b>Marcel Proust</b> mit seiner Mutter durch den Park — lange bevor er „Auf der Suche "
+                           "nach der verlorenen Zeit“ schrieb."),
+               ("tip", "<b>Zum Zuschauen:</b> Seit 1958 gibt es hier einen Minigolfplatz, und dienstags und "
+                       "donnerstags um 16 Uhr wird Boule gespielt.")],
+        moment="Ein ruhiger Platz zum Sitzen — setz dich, wenn dir danach ist.",
+        audio=dict(file="oranienpark", label="Ein Spaziergang mit Marcel Proust",
+                   text="Der Oranienpark. Ein kleiner, symmetrischer Barockgarten zwischen Roseninsel und Kurpark, "
+                        "zwei Hektar groß, mit geschwungenen Wegen, Wasserbecken, einem Laubengang aus Pergolen "
+                        "und etwa hundertzwanzig großen Bäumen. Seinen Namen hat er von Maria von Nassau-Oranien, "
+                        "der niederländischen Frau eines Pfalzgrafen. Bis neunzehnhundertneunundzwanzig stand hier "
+                        "das prunkvolle Hotel Oranienhof. "
+                        "Und ein berühmter Gast ist hier spazieren gegangen: Im Jahr achtzehnhundertfünfundneunzig "
+                        "wandelte der Schriftsteller Marcel Proust mit seiner Mutter durch diesen Park. "
+                        "Das war lange, bevor er sein großes Werk über die verlorene Zeit schrieb. "
+                        "Heute gibt es einen Minigolfplatz, und dienstags und donnerstags wird hier Boule gespielt. "
+                        "Setz dich ruhig auf eine Bank und lass die Zeit ein wenig langsamer laufen."),
+        lat=49.8372, lon=7.8530, maps="Oranienpark in Google Maps",
+    ),
+    dict(
+        id="s4", kind="stop", bead="4", map=["Kurpark"],
         img="kurpark", pos="center", alt="Wiese mit Tulpen und alten Bäumen im Kurpark",
-        eyebrow="Stop 3 · Das Herz der Kur",
+        eyebrow="Stop 4 · Das Herz der Kur",
         title="Kurpark",
-        walk="ca. 17 min zu Fuß — weiter Richtung Innenstadt.",
+        walk="ca. 8 min zu Fuß — weiter Richtung Innenstadt.",
         body=[
             "Seit den 1830er Jahren Kurgarten: Hier wurde die erste Solequelle der Stadt gefasst, die "
             "<b>Elisabethquelle</b>, und 1843 öffnete das erste Kurhaus. Der Park hat <b>145 große Bäume</b> — "
@@ -137,9 +169,9 @@ STOPS = [
         lat=49.8413, lon=7.8518, maps="Kurpark in Google Maps",
     ),
     dict(
-        id="s4", kind="stop", bead="4", map=["Pauluskirche"],
+        id="s5", kind="stop", bead="5", map=["Paulus-", "kirche"],
         img="paulus", pos="center", alt="Die Pauluskirche mit rotem Turm und Fachwerkhaus auf der Insel zwischen Nahe und Mühlenteich",
-        eyebrow="Stop 4 · Auf der Insel",
+        eyebrow="Stop 5 · Auf der Insel",
         title="Pauluskirche",
         walk="ca. 9 min zu Fuß — die Kirche liegt auf einer Insel zwischen Nahe und Mühlenteich.",
         body=[
@@ -168,9 +200,9 @@ STOPS = [
         lat=49.8443, lon=7.8568, maps="Pauluskirche in Google Maps",
     ),
     dict(
-        id="s5", kind="stop", bead="5", map=["Brückenhäuser"],
+        id="s6", kind="stop", bead="6", map=["Brücken-", "häuser"],
         img="brueckenhaeuser", pos="center", alt="Die Brückenhäuser auf der Alten Nahebrücke, dahinter ein Kirchturm",
-        eyebrow="Stop 5 · Wahrzeichen",
+        eyebrow="Stop 6 · Wahrzeichen",
         title="Brückenhäuser",
         walk="1–2 min — gleich neben der Pauluskirche.",
         body=[
@@ -180,8 +212,9 @@ STOPS = [
             "Die Brücke überspannt zwei Flussarme: die Nahe und den <b>Mühlenteich</b>, "
             "einen Kanal, der früher eine Mühle versorgte.",
         ],
-        boxes=[("funfact", "<b>💣 Fun Fact:</b> In einer Fassade steckt noch eine <b>Kanonenkugel</b> aus dem "
-                           "Dreißigjährigen Krieg. Und die Keller der Häuser waren früher "
+        boxes=[("funfact", "<b>💣 Fun Fact:</b> Am ältesten Brückenhaus (<b>1609</b>) steckt noch eine "
+                           "<b>Kanonenkugel</b> aus dem Dreißigjährigen Krieg in der Fassade — heute ist darin die "
+                           "<b>Weinstube im Brückenhaus</b> (Mannheimer Str. 94). Die Keller der Häuser waren früher "
                            "<b>Pulvermagazine</b> der Brückenbefestigung."),
                ("tip", "<b>Beste Aussicht:</b> von der Geißenbrücke über den Mühlenteich, gleich bei der Pauluskirche.")],
         moment="Bleib einen Moment auf der Brücke stehen und schau, wie das Wasser unter dir weiterzieht.",
@@ -191,26 +224,51 @@ STOPS = [
                         "Deshalb haben Bürger ab vierzehnhundertachtzig, obwohl es eigentlich verboten war, "
                         "Fachwerkhäuser auf die Brückenpfeiler gebaut. Die Häuser stehen auf Holzstützen, "
                         "darum richtet Hochwasser meist wenig an. "
-                        "Die Keller waren früher Pulvermagazine der Brückenbefestigung, "
-                        "und in einer Fassade steckt bis heute eine Kanonenkugel aus dem Dreißigjährigen Krieg, "
-                        "als die Stadt von den Spaniern und später von den Schweden erobert wurde. "
+                        "Die Keller waren früher Pulvermagazine der Brückenbefestigung. "
+                        "Am ältesten Brückenhaus, erbaut sechzehnhundertneun, steckt bis heute eine Kanonenkugel "
+                        "aus dem Dreißigjährigen Krieg in der Fassade, als die Stadt von den Spaniern und später "
+                        "von den Schweden erobert wurde. Heute ist in diesem Haus eine Weinstube. "
                         "Brücken, auf denen Häuser stehen, gibt es in Deutschland nur noch ganz wenige. "
                         "Die schönste Aussicht hast du von der Geißenbrücke über den Mühlenteich. "
                         "Bleib einen Moment stehen und schau, wie das Wasser weiterzieht."),
         lat=49.8447, lon=7.8576, maps="Brückenhäuser in Google Maps",
     ),
     dict(
-        id="s6", kind="stop", bead="6", map=["Eiermarkt"],
+        id="s7", kind="stop", bead="7", map=["Klein-", "Venedig"],
+        img="venedig", pos="center", alt="Bunte Häuser an einem Bach in der Bad Kreuznacher Altstadt",
+        eyebrow="Stop 7 · Fotospot",
+        title="Klein-Venedig",
+        walk="wenige Minuten — ein Stück zwischen Nahe und Eiermarkt.",
+        body=[
+            "Dort, wo der <b>Ellerbach</b> nach gut 27 Kilometern aus dem Soonwald in die Nahe mündet, "
+            "entstand an den alten Stadtmauern eine fotogene, vielfarbige Häuserfront. "
+            "Die Bad Kreuznacher nennen sie liebevoll <b>Klein-Venedig</b>.",
+        ],
+        boxes=[("tip", "<b>Tipp:</b> Die Häuser stehen am Weg von der Nahe zum Eiermarkt. "
+                       "Der Maps-Button sucht den Ort per Name.")],
+        moment=None,
+        audio=dict(file="klein-venedig", label="Venedig an der Nahe",
+                   text="Klein-Venedig. So nennen die Bad Kreuznacher eine Häuserfront, die du leicht übersiehst, "
+                        "wenn du nicht hinschaust. Hier mündet der Ellerbach, nach mehr als siebenundzwanzig "
+                        "Kilometern vom Soonwald, in die Nahe. Die Häuser wurden an die alten Stadtmauern gebaut, "
+                        "und heute leuchten sie in vielen Farben direkt am Wasser. "
+                        "Ein hübscher Ort für ein Foto, und ein schöner Moment zum Atemholen, "
+                        "bevor du zum Eiermarkt weitergehst."),
+        lat=None, lon=None, query="Klein-Venedig Bad Kreuznach", maps="Klein-Venedig in Google Maps",
+    ),
+    dict(
+        id="s8", kind="stop", bead="8", map=["Eiermarkt"],
         img="nikolaus", pos="center 22%", alt="Der Turm der Nikolauskirche vor bewölktem Himmel",
-        eyebrow="Stop 6 · Altstadt",
+        eyebrow="Stop 8 · Altstadt",
         title="Eiermarkt & Nikolauskirche",
-        walk="ca. 5 min — über die Brücke hinein in die Neustadt (die „Altstadt“ der Einheimischen).",
+        walk="wenige Minuten — von Klein-Venedig zum zentralen Platz der Neustadt (die „Altstadt“ der Einheimischen).",
         body=[
             "Jahrhundertelang war der <b>Eiermarkt</b> der Mittelpunkt der Stadt: Hier gab es Obst-, Fisch- "
             "und Tonwarenmarkt. Ringsum stehen Fachwerkhäuser, die Nikolauskirche und enge Gassen des "
             "alten Metzgerviertels.",
             "In der Mitte steht das <b>Michel-Mort-Denkmal</b> (1902, Robert Cauer): ein Metzgergeselle, "
-            "der 1279 in der Schlacht bei Sprendlingen den Grafen von Sponheim gerettet haben soll.",
+            "der 1279 in der Schlacht bei Sprendlingen den Grafen von Sponheim gerettet haben soll — "
+            "erzählt hat die Sage der Gelehrte Johannes Trithemius.",
         ],
         boxes=[("funfact", "<b>🥩 Fun Fact:</b> Die Figur auf dem Platz ist eine <b>Kopie</b> aus Kunststein — "
                            "das Original steht im Rathaus. Und das alte Rathaus am Eiermarkt brannte 1849 ab."),
@@ -224,6 +282,7 @@ STOPS = [
                         "Heute steht in der Mitte das Michel-Mort-Denkmal, geschaffen neunzehnhundertzwei "
                         "von Robert Cauer. Es erinnert an einen Metzgergesellen, der zwölfhundertneunundsiebzig "
                         "in der Schlacht bei Sprendlingen dem Grafen von Sponheim das Leben gerettet haben soll. "
+                        "Die Sage erzählt der Gelehrte Johannes Trithemius. "
                         "Die Figur auf dem Platz ist übrigens eine Kopie aus Kunststein. "
                         "Das Original steht im Rathaus. Rundherum siehst du Fachwerkhäuser, die Nikolauskirche "
                         "und die engen Gassen des alten Metzgerviertels. "
@@ -231,11 +290,11 @@ STOPS = [
         lat=49.8469, lon=7.8561, maps="Eiermarkt in Google Maps",
     ),
     dict(
-        id="b7", kind="bonus", bead="7", map=["Römerhalle"],
+        id="b9", kind="bonus", bead="9", map=["Römer-", "halle"],
         img="roemerhalle", pos="center", alt="Der Eingang der Römerhalle aus rotem Backstein",
         eyebrow="Bonus · Wenn das Wetter nicht mitspielt",
         title="Römerhalle",
-        walk="ca. 12 min zu Fuß vom Eiermarkt (Hüffelsheimer Straße 11).",
+        walk="ca. 12 min zu Fuß vom Eiermarkt (Hüffelsheimer Straße 11). Gleich nebenan: das Museum für PuppentheaterKultur (Fliewatüüt, Käpt'n Blaubär).",
         body=[
             "Schon <b>58 v. Chr.</b> entstand hier ein römischer Vicus. Um 234 n. Chr. wurde ein großer "
             "<b>Palast mit Innenhof</b> gebaut, 81 × 71 Meter. Die Halle zeigt die ausgegrabenen Reste: "
@@ -257,7 +316,7 @@ STOPS = [
         lat=49.8457, lon=7.8469, maps="Römerhalle in Google Maps",
     ),
     dict(
-        id="b8", kind="bonus", bead="8", map=["Kauzenburg"],
+        id="b10", kind="bonus", bead="10", map=["Kauzenburg"],
         img="kauzenburg", pos="center", alt="Die Mauern der Kauzenburg über Weinbergen",
         eyebrow="Bonus · Nur wenn es dir gut geht",
         title="Kauzenburg",
@@ -288,3 +347,44 @@ HOME = dict(
     tip="<b>Abkürzung jederzeit:</b> Mit der Maps-Taste unten findest du jederzeit den direkten Weg zurück "
         "zum Stift.",
 )
+
+
+# Pausen & Essen — Öffnungszeiten nur, wo sie von der Website des Betriebs oder der Tourist-Information stammen.
+# lat/lon oder query (Textsuche) für den Maps-Button.
+EATS_INTRO = ("Alle Orte liegen an oder nahe der Route. Angaben nach Webseiten der Betriebe bzw. der "
+              "Tourist-Information, Stand Herbst 2026 — <b>bitte kurz vorher prüfen</b>.")
+EATS = [
+    dict(group="☕ Kaffee & Kuchen", items=[
+        dict(name="Terrassencafé am Kurpark", where="Kaiser-Wilhelm-Str. 11 A · nahe Stop 4",
+             note="Terrasse, Frühstück, hausgemachte Kuchen (ca. 4 €), Kartenzahlung. Täglich 9–20:30 Uhr.",
+             lat=49.839777, lon=7.8541339),
+        dict(name="Café Wahl", where="Kurhausstr. 19 · am Kurpark",
+             note="Konditorei seit 1887 mit Garten. Di Ruhetag, sonst ca. 8:30–19 Uhr. <b>Achtung:</b> Das Café "
+                  "meldete im Spätsommer 2026 Insolvenz an; laut Presse läuft der Betrieb weiter — "
+                  "bitte vorher nachsehen.",
+             lat=49.8414909, lon=7.8550546),
+        dict(name="Café Schoko", where="Hospitalgasse 10 · Altstadt",
+             note="Viel besucht und gut bewertet; Zeiten bitte vor Ort oder online prüfen.",
+             lat=49.8425739, lon=7.8602195),
+        dict(name="Schwedisches Stehcafé", where="Mannheimer Str. 88 · auf der Alten Nahebrücke",
+             note="Kleines Café direkt in den Brückenhäusern, laut Wikivoyage täglich ca. 10–18 Uhr. "
+                  "Wie der Name sagt: wenig Sitzplätze.",
+             lat=49.844912, lon=7.8572563),
+    ]),
+    dict(group="🍷 Wein & Essen", items=[
+        dict(name="Weinlokal Elisabethenquelle", where="im Kurpark · Stop 4",
+             note="Nahe-Weine und regionale, saisonale Speisen an der alten Quelle. Zeiten bitte prüfen.",
+             lat=49.8392998, lon=7.8528747),
+        dict(name="Weinstube im Brückenhaus", where="Mannheimer Str. 94 · Stop 6",
+             note="Im ältesten Brückenhaus (1609) mit der Kanonenkugel in der Fassade. Montag Ruhetag, "
+                  "geöffnet erst am späteren Nachmittag/Abend.",
+             lat=49.8446555, lon=7.8577932),
+        dict(name="Wirtshaus Wolpertinger", where="Kornmarkt 1 · Altstadt",
+             note="Bürgerliche Küche, sehr viel besucht — gut für ein Mittagessen.",
+             query="Wirtshaus Wolpertinger Kornmarkt 1 Bad Kreuznach"),
+        dict(name="Restaurant AUSZEIT", where="im Salinental · Stop 1",
+             note="Moderne, saisonale Küche mit großer Terrasse. Mo–Sa ab 17 Uhr, So & Feiertage ab 12 Uhr. "
+                  "Reservierung bitte telefonisch: <a href=\"tel:+4967192005665\">0671 92 00 56 65</a>.",
+             query="Restaurant AUSZEIT Salinental Bad Kreuznach"),
+    ]),
+]

@@ -16,8 +16,17 @@ async def main(only):
         if only and a["file"] not in only:
             continue
         out = os.path.join(ROOT, "assets", "audio", a["file"] + ".mp3")
-        await edge_tts.Communicate(a["text"], VOICE, rate=RATE).save(out)
-        print(a["file"], os.path.getsize(out) // 1024, "KB")
+        for attempt in range(1, 7):  # der Dienst liefert gelegentlich kein Audio — erneut versuchen
+            try:
+                await edge_tts.Communicate(a["text"], VOICE, rate=RATE).save(out + ".tmp")
+                os.replace(out + ".tmp", out)
+                break
+            except edge_tts.exceptions.NoAudioReceived:
+                print(a["file"], "kein Audio, Versuch", attempt, flush=True)
+                await asyncio.sleep(5 * attempt)
+        else:
+            sys.exit("Fehlgeschlagen: " + a["file"])
+        print(a["file"], os.path.getsize(out) // 1024, "KB", flush=True)
 
 
 asyncio.run(main(set(sys.argv[1:])))

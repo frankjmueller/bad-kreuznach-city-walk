@@ -3,7 +3,7 @@
    and answers HTTP Range requests from cache (required for
    audio playback on iOS Safari while offline). */
 
-const CACHE_NAME = 'bad-kreuznach-walk-v1';
+const CACHE_NAME = 'bad-kreuznach-walk-v2';
 
 const ASSETS = [
   './',
@@ -18,17 +18,21 @@ const ASSETS = [
   './assets/img/kauzenburg.webp',
   './assets/img/kurpark.webp',
   './assets/img/nikolaus.webp',
+  './assets/img/oranienpark.webp',
   './assets/img/paulus.webp',
   './assets/img/roemerhalle.webp',
   './assets/img/roseninsel.webp',
   './assets/img/salinen.webp',
   './assets/img/stift.webp',
+  './assets/img/venedig.webp',
   './assets/audio/willkommen.mp3',
   './assets/audio/salinental.mp3',
   './assets/audio/roseninsel.mp3',
+  './assets/audio/oranienpark.mp3',
   './assets/audio/kurpark.mp3',
   './assets/audio/pauluskirche.mp3',
   './assets/audio/brueckenhaeuser.mp3',
+  './assets/audio/klein-venedig.mp3',
   './assets/audio/eiermarkt.mp3',
   './assets/audio/roemerhalle.mp3',
   './assets/audio/kauzenburg.mp3',

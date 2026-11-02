@@ -228,6 +228,21 @@ h1,h2,h3,.eyebrow,.bead,.hero-sub b{font-family:'Bricolage',system-ui,sans-serif
 .meet [contenteditable]:focus{border-bottom-color:var(--gold)}
 .meet small{color:var(--muted)}
 
+.eats{padding-bottom:1.1rem}
+.eats-intro{text-align:left!important;font-size:.9rem!important;margin:.5rem 0 .2rem!important}
+.eats-group{font-family:'Bricolage',system-ui,sans-serif;font-size:1.05rem;margin:1.2rem 0 .3rem;
+  padding-bottom:.25rem;border-bottom:2px solid var(--line)}
+.eat{display:flex;gap:.8rem;align-items:flex-start;justify-content:space-between;
+  padding:.75rem 0;border-bottom:1px solid var(--line)}
+.eat:last-child{border-bottom:none}
+.eat>div>b:first-child{display:block;font-size:1.02rem}
+.eat .where{display:block;font-size:.82rem;color:var(--muted);margin:.05rem 0 .25rem}
+.eat p{margin:.2rem 0 0!important;text-align:left!important;font-size:.92rem!important;color:var(--ink)!important}
+.eat-map{flex:none;width:48px;height:48px;border-radius:50%;background:var(--wine);color:#fff;
+  display:flex;align-items:center;justify-content:center}
+.eat-map svg{width:22px;height:22px;fill:currentColor}
+.eat-map:active{opacity:.85}
+
 footer{
   margin:2.5rem 0 0;padding:2rem 1.3rem 3rem;
   background:var(--teal-deep);color:#C9DAD6;font-size:.82rem;line-height:1.7;
@@ -269,8 +284,8 @@ footer p{margin:.3rem 0}
 
   <section class="map-card" aria-label="Routenübersicht">
     <h2>Dein Weg — Schritt für Schritt</h2>
-    <p>Tippe auf eine Station, um zu ihr zu springen. Etwa 2 km einfach, mit vielen Pausen.</p>
-    <svg viewBox="0 0 360 340" role="img" aria-label="Schematische Karte der Route mit allen Stationen">
+    <p>Tippe auf eine Station, um zu ihr zu springen. Etwa 2 km einfach, mit vielen Pausen. Cafés und Essen: <a href="#pausen">Pausen &amp; Essen ↓</a></p>
+    <svg viewBox="0 0 360 {{MAPH}}" role="img" aria-label="Schematische Karte der Route mit allen Stationen">
       {{MAP}}
     </svg>
     <p class="legend"><span><i style="background:#2F6B6B"></i>Station</span><span><i style="background:#7B2D3B"></i>Bonus (optional)</span></p>
@@ -280,6 +295,11 @@ footer p{margin:.3rem 0}
 
 {{ROUTE}}
   </ol>
+
+  <section class="map-card eats" id="pausen" aria-label="Pausen und Essen">
+    <h2>Pausen &amp; Essen</h2>
+      {{EATS}}
+  </section>
 
   <section class="map-card" aria-label="Praktische Infos">
     <h2>Gut zu wissen</h2>
@@ -315,7 +335,9 @@ footer p{margin:.3rem 0}
       Pauluskirche: Edgar El, CC BY 3.0 ·
       Brückenhäuser: Franzfoto, CC BY-SA 4.0 ·
       Römerhalle: Haselburg-müller, CC BY-SA 3.0 ·
-      Kauzenburg: Elke Wetzig, CC BY-SA 3.0 — Details in
+      Kauzenburg: Elke Wetzig, CC BY-SA 3.0 ·
+      Oranienpark: HeinrichLaun, CC BY-SA 3.0 ·
+      Klein-Venedig: InfoNinja42, CC0 — Details in
       <a href="{{REPO}}/blob/main/ATTRIBUTION.md">ATTRIBUTION.md</a>.
     </p>
     <p>Stimme: synthetisch (edge-tts). Angaben nach öffentlich zugänglichen Quellen (u. a. Tourist-Information
