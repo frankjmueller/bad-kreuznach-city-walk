@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bad Kreuznach für Sandra — Spaziergang ab St. Franziska-Stift (offline)</title>
+<meta name="description" content="Ein ruhiger Spaziergang ab dem St. Franziska-Stift durch Salinental, Kurpark und Altstadt von Bad Kreuznach — mit Audio-Geschichten, komplett offline.">
+<meta name="theme-color" content="#204A4A">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<style>
+@font-face{
+  font-family:'Bricolage';
+  src:url('assets/fonts/bricolage.woff2') format('woff2');
+  font-weight:400 800;
+  font-display:swap;
+}
+:root{
+  --teal:#2F6B6B; --teal-deep:#204A4A;
+  --wine:#7B2D3B;
+  --gold:#C79A3B; --gold-soft:#E8D7A8;
+  --paper:#F6F3EB; --card:#FFFFFF;
+  --ink:#24302F; --muted:#6B7774; --line:#E1DDD0;
+  --shadow:0 2px 12px rgba(36,48,47,.08);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --paper:#151D1D; --card:#1F2929;
+    --ink:#EAF0EE; --muted:#A3B2AE; --line:#334140;
+    --gold:#D6AB4A; --gold-soft:#8A7233;
+    --teal:#5FA3A0;
+    --shadow:0 2px 14px rgba(0,0,0,.35);
+  }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  line-height:1.7; font-size:1.05rem;
+  -webkit-text-size-adjust:100%;
+}
+a{color:var(--teal)}
+h1,h2,h3,.eyebrow,.bead,.hero-sub b{font-family:'Bricolage',system-ui,sans-serif}
+
+.hero{
+  background:
+    linear-gradient(rgba(255,255,255,.07),rgba(0,0,0,.12)),
+    repeating-linear-gradient(90deg, rgba(255,255,255,.05) 0 2px, transparent 2px 22px),
+    var(--teal-deep);
+  color:#F1F6F4;
+  padding:2.6rem 1.3rem 2.2rem;
+  text-align:center;
+}
+.hero .eyebrow{
+  letter-spacing:.22em; font-size:.72rem; font-weight:600;
+  text-transform:uppercase; color:var(--gold-soft); margin:0 0 .6rem;
+}
+.hero h1{
+  font-size:clamp(2.2rem,9.5vw,3.4rem); font-weight:800; margin:0;
+  line-height:1.05; color:#F1F6F4;
+}
+.hero h1 .gold{color:var(--gold)}
+.hero-sub{max-width:34rem;margin:1rem auto 0;font-size:1.02rem;color:#D8E6E2}
+.hero-logo{
+  display:block;margin:1.3rem auto .4rem;
+  width:96px;height:96px;border-radius:24px;
+  border:2.5px solid var(--gold);
+  box-shadow:0 6px 18px rgba(0,0,0,.35);
+}
+.status{
+  display:inline-flex;align-items:center;gap:.5em;
+  margin-top:1.2rem;padding:.5em 1.1em;border-radius:999px;
+  background:rgba(0,0,0,.28);color:#EEF3F1;font-size:.88rem;font-weight:600;
+  border:1px solid rgba(199,154,59,.5);
+}
+.status.ready{background:#2B7A58;border-color:#6FCF9F;color:#EAF8F1}
+.status .dot{width:.6em;height:.6em;border-radius:50%;background:var(--gold);flex:none}
+.status.ready .dot{background:#9BE8C2}
+@keyframes pulse{50%{opacity:.35}}
+.status:not(.ready) .dot{animation:pulse 1.2s ease-in-out infinite}
+@media (prefers-reduced-motion: reduce){ .status .dot{animation:none} }
+
+.install{
+  display:inline-flex;align-items:center;gap:.5em;margin:1rem auto 0;
+  background:var(--gold);color:#2A2108;border:none;cursor:pointer;
+  padding:.75em 1.4em;border-radius:999px;font-weight:700;font-size:1rem;
+  font-family:inherit;box-shadow:0 2px 8px rgba(0,0,0,.25);
+}
+.install:active{transform:scale(.97)}
+.install img{width:22px;height:22px;border-radius:6px}
+.ios-tip{
+  max-width:22rem;margin:.9rem auto 0;padding:.8rem 1rem;border-radius:12px;
+  background:rgba(0,0,0,.3);border:1px solid rgba(199,154,59,.5);
+  color:#EEF3F1;font-size:.9rem;text-align:left;line-height:1.55;
+}
+.ios-tip .share{
+  display:inline-block;border:1.5px solid currentColor;border-radius:4px;
+  width:1.1em;height:1.1em;text-align:center;line-height:1.05;font-size:.9em;
+  vertical-align:-.15em;
+}
+
+.wrap{max-width:640px;margin:0 auto;padding:0 1.05rem}
+
+.howto{
+  background:#2B4F4B;color:#EAF5F1;
+  padding:1.1rem 1.3rem;font-size:.94rem;
+}
+.howto .wrap{display:flex;gap:1.2rem;flex-wrap:wrap;justify-content:center;padding:0}
+.howto span{display:flex;align-items:center;gap:.45em}
+.howto b{color:var(--gold-soft)}
+
+.map-card{
+  background:var(--card);border:1px solid var(--line);border-radius:16px;
+  box-shadow:var(--shadow);margin:1.6rem auto;padding:1.2rem 1rem .6rem;
+}
+.map-card h2{margin:.2rem 0 0;text-align:center;font-size:1.25rem}
+.map-card p{color:var(--muted);text-align:center;font-size:.9rem;margin:.3rem 0 .4rem}
+.map-card svg{width:100%;height:auto;display:block}
+.map-card svg text{font-family:system-ui,sans-serif}
+.map-card svg a:focus circle{stroke-width:5}
+.legend{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;font-size:.82rem;color:var(--muted);margin:.2rem 0 .6rem}
+.legend i{display:inline-block;width:.8em;height:.8em;border-radius:50%;margin-right:.35em;vertical-align:-.05em}
+
+.route{list-style:none;margin:2rem 0 0;padding:0;position:relative}
+.route::before{
+  content:"";position:absolute;top:10px;bottom:10px;left:21px;
+  border-left:3px dashed var(--gold);opacity:.75;
+}
+.stop{position:relative;padding:0 0 2rem 3.1rem}
+.bead{
+  position:absolute;left:0;top:0;
+  width:44px;height:44px;border-radius:50%;
+  background:var(--teal);color:#fff;
+  border:3px solid var(--gold);
+  display:flex;align-items:center;justify-content:center;
+  font-weight:800;font-size:1.15rem;z-index:1;
+}
+.stop.transit .bead{background:var(--teal-deep);font-size:1.3rem}
+.stop.bonus .bead{background:var(--wine)}
+.card{
+  background:var(--card);border:1px solid var(--line);border-radius:16px;
+  box-shadow:var(--shadow);overflow:hidden;
+}
+.card>img{width:100%;height:210px;object-fit:cover;display:block;background:var(--line)}
+.card .pad{padding:1.1rem 1.15rem 1.2rem}
+.eyebrow{
+  margin:0 0 .25rem;font-size:.72rem;font-weight:600;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--teal);
+}
+.stop.bonus .eyebrow{color:var(--wine)}
+@media (prefers-color-scheme: dark){ .stop.bonus .eyebrow{color:#E39AA9} }
+.card h2{margin:0 0 .5rem;font-size:1.45rem;font-weight:700;line-height:1.15}
+.walk{
+  font-size:.9rem;color:var(--muted);margin:.1rem 0 .8rem;
+  padding-left:1.5em;position:relative;
+}
+.walk::before{content:"🚶";position:absolute;left:0}
+.card p{margin:.55rem 0}
+.tip,.funfact,.moment{
+  padding:.65rem .9rem;margin:.9rem 0;border-radius:0 10px 10px 0;
+  font-size:.95rem;
+}
+.tip{
+  background:color-mix(in srgb, var(--gold) 13%, var(--card));
+  border-left:4px solid var(--gold);
+}
+.funfact{
+  background:color-mix(in srgb, var(--teal) 10%, var(--card));
+  border-left:4px solid var(--teal);
+}
+.moment{
+  background:color-mix(in srgb, var(--wine) 8%, var(--card));
+  border-left:4px solid var(--wine);
+  font-style:italic;
+}
+.moment b{font-style:normal}
+
+.player{
+  display:flex;align-items:center;gap:.75rem;
+  background:color-mix(in srgb, var(--teal) 9%, var(--card));
+  border:1px solid color-mix(in srgb, var(--teal) 35%, var(--line));
+  border-radius:12px;padding:.55rem .8rem;margin:.9rem 0;
+}
+.player button{
+  flex:none;width:48px;height:48px;border-radius:50%;border:none;
+  background:var(--teal-deep);color:#fff;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+}
+@media (prefers-color-scheme: dark){ .player button{background:var(--teal)} }
+.player button:active{transform:scale(.95)}
+.player button svg{width:18px;height:18px;fill:currentColor}
+.player .meta{flex:1;min-width:0}
+.player .label{font-size:.85rem;font-weight:600;margin:0 0 .3rem;color:var(--ink)}
+.player .bar{
+  height:10px;border-radius:5px;background:color-mix(in srgb, var(--teal) 22%, var(--card));
+  position:relative;cursor:pointer;touch-action:none;
+}
+.player .fill{position:absolute;inset:0 auto 0 0;width:0%;border-radius:5px;background:var(--teal)}
+.player .time{font-size:.8rem;color:var(--muted);font-variant-numeric:tabular-nums;flex:none}
+
+.maps{
+  display:flex;align-items:center;justify-content:center;gap:.5em;
+  background:var(--wine);color:#fff;text-decoration:none;
+  padding:.9em 1em;border-radius:12px;font-weight:700;font-size:1rem;
+  margin-top:.9rem;
+}
+.maps:active{opacity:.85}
+.maps svg{width:1.05em;height:1.05em;fill:currentColor;flex:none}
+
+.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;margin:.9rem 0}
+.info-grid div{
+  background:color-mix(in srgb, var(--teal) 7%, var(--card));
+  border:1px solid var(--line);border-radius:12px;padding:.7rem .8rem;
+  font-size:.9rem;line-height:1.45;
+}
+.info-grid b{display:block;font-size:.95rem}
+.meet{
+  border:2px dashed var(--gold);border-radius:12px;
+  padding:.8rem 1rem;margin-top:1rem;font-size:.95rem;
+}
+.meet [contenteditable]{
+  display:block;min-height:1.5em;font-weight:700;font-size:1.05rem;outline:none;
+  border-bottom:1px solid var(--line);
+}
+.meet [contenteditable]:focus{border-bottom-color:var(--gold)}
+.meet small{color:var(--muted)}
+
+footer{
+  margin:2.5rem 0 0;padding:2rem 1.3rem 3rem;
+  background:var(--teal-deep);color:#C9DAD6;font-size:.82rem;line-height:1.7;
+}
+footer a{color:var(--gold-soft)}
+footer h3{color:#F1F6F4;font-size:.95rem;margin:1.4rem 0 .4rem}
+footer p{margin:.3rem 0}
+
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px;border-radius:4px}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <p class="eyebrow">Offline-Guide · Bad Kreuznach</p>
+  <h1>Hallo Sandra<span class="gold">!</span></h1>
+  <img class="hero-logo" src="icons/icon-192.png" alt="" width="96" height="96">
+  <p class="hero-sub">Ein ruhiger Spaziergang ab dem <b>St. Franziska-Stift</b> —
+  durch Salinental, Kurpark und Altstadt. Ohne Zeitplan, mit Bänken, Geschichten zum Anhören
+  und allem Wichtigen direkt auf deinem Handy, auch <b>ohne Internet</b>.</p>
+  <p class="status" id="status"><span class="dot"></span><span id="status-text">Prüfe Offline-Speicher…</span></p>
+  <br>
+  <button class="install" id="install-btn" hidden>
+    <img src="icons/icon-192.png" alt="">
+    Als App installieren
+  </button>
+  <div class="ios-tip" id="install-tip" hidden></div>
+</header>
+
+<div class="howto">
+  <div class="wrap">
+    <span><b>1</b> Seite einmal mit Internet öffnen</span>
+    <span><b>2</b> Auf das grüne „Offline bereit“ warten</span>
+    <span><b>3</b> Losgehen — Flugmodus ist okay</span>
+  </div>
+</div>
+
+<main class="wrap">
+
+  <section class="map-card" aria-label="Routenübersicht">
+    <h2>Dein Weg — Schritt für Schritt</h2>
+    <p>Tippe auf eine Station, um zu ihr zu springen. Etwa 2 km einfach, mit vielen Pausen.</p>
+    <svg viewBox="0 0 360 340" role="img" aria-label="Schematische Karte der Route mit allen Stationen">
+      {{MAP}}
+    </svg>
+    <p class="legend"><span><i style="background:#2F6B6B"></i>Station</span><span><i style="background:#7B2D3B"></i>Bonus (optional)</span></p>
+  </section>
+
+  <ol class="route">
+
+{{ROUTE}}
+  </ol>
+
+  <section class="map-card" aria-label="Praktische Infos">
+    <h2>Gut zu wissen</h2>
+    <div class="info-grid">
+      <div><b>🚨 Notfall</b>112 (Rettung/Feuerwehr) · 110 (Polizei).</div>
+      <div><b>🪑 Pausen</b>Im Kurpark, auf der Roseninsel und rund um die Altstadt gibt es viele Bänke und Cafés.</div>
+      <div><b>💳 Bezahlen</b>Karte geht fast überall; etwas Kleingeld ist trotzdem praktisch.</div>
+      <div><b>🌦️ Wetter</b>Zieh dich nach Zwiebelprinzip an — und nimm eine dünne Regenjacke mit.</div>
+      <div><b>🛍️ Sonntags</b>Läden zu; Cafés und Eisdielen oft offen.</div>
+      <div><b>📵 Kein Netz?</b>Egal. Dieser Guide läuft offline — und Google Maps mit
+      heruntergeladener Karte von Bad Kreuznach auch.</div>
+    </div>
+    <div class="meet">
+      Eigene Notiz, z. B. wann du zurück sein möchtest (zum Bearbeiten antippen):
+      <span id="meet" contenteditable="true" spellcheck="false"></span>
+      <small>Wird auf diesem Handy gespeichert — bleibt auch nach dem Schließen.</small>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Mit Sorgfalt gebaut für Sandra · Bad Kreuznach · Stand November 2026</p>
+    <p>Funktioniert offline, sobald einmal vollständig geladen. Die Google-Maps-Buttons
+    öffnen deine Maps-App — mit heruntergeladener Offline-Karte auch ohne Netz.</p>
+    <h3>Fotos (Wikimedia Commons)</h3>
+    <p>
+      St. Franziska-Stift &amp; Nikolauskirche: Axolotl Nr. 733, CC BY-SA 3.0 ·
+      Salinental: Ralfk, CC BY-SA 4.0 ·
+      Roseninsel: giggel, CC BY 3.0 ·
+      Kurpark: CainUschi, CC BY-SA 3.0 ·
+      Pauluskirche: Edgar El, CC BY 3.0 ·
+      Brückenhäuser: Franzfoto, CC BY-SA 4.0 ·
+      Römerhalle: Haselburg-müller, CC BY-SA 3.0 ·
+      Kauzenburg: Elke Wetzig, CC BY-SA 3.0 — Details in
+      <a href="{{REPO}}/blob/main/ATTRIBUTION.md">ATTRIBUTION.md</a>.
+    </p>
+    <p>Stimme: synthetisch (edge-tts). Angaben nach öffentlich zugänglichen Quellen (u. a. Tourist-Information
+    Bad Kreuznach, Wikipedia, Wikivoyage) zusammengestellt — Öffnungszeiten können sich ändern.
+    <span id="version">Guide-Version {{VERSION}}</span></p>
+  </div>
+</footer>
+
+<script>
+/* ————— Service worker: register + progress ————— */
+(function () {
+  const statusEl = document.getElementById('status');
+  const textEl = document.getElementById('status-text');
+
+  function setStatus(ready, text) {
+    statusEl.classList.toggle('ready', ready);
+    textEl.textContent = text;
+  }
+
+  if (!('serviceWorker' in navigator)) {
+    setStatus(false, 'Offline-Speichern wird von diesem Browser nicht unterstützt');
+    return;
+  }
+  if (location.protocol === 'file:') {
+    setStatus(false, 'Über den Web-Link öffnen, um den Offline-Modus zu aktivieren');
+    return;
+  }
+
+  const hadController = !!navigator.serviceWorker.controller;
+  let refreshing = false;
+  navigator.serviceWorker.addEventListener('controllerchange', () => {
+    if (refreshing || !hadController) return;
+    refreshing = true;
+    location.reload();
+  });
+
+  navigator.serviceWorker.register('sw.js').then(reg => {
+    reg.update();
+    setStatus(false, 'Guide wird für offline gespeichert…');
+    let tries = 0;
+    const poll = setInterval(() => {
+      tries++;
+      navigator.serviceWorker.ready.then(reg => {
+        const sw = reg.active;
+        if (!sw) return;
+        const ch = new MessageChannel();
+        ch.port1.onmessage = e => {
+          const { cached, total } = e.data;
+          if (cached >= total) {
+            clearInterval(poll);
+            setStatus(true, 'Offline bereit — Flugmodus ist okay ✓');
+          } else {
+            setStatus(false, `Wird gespeichert… ${cached}/${total}`);
+          }
+        };
+        sw.postMessage({ type: 'STATUS' }, [ch.port2]);
+      });
+      if (tries > 240) clearInterval(poll);
+    }, 800);
+  }).catch(() => {
+    setStatus(false, 'Offline-Speichern nicht verfügbar');
+  });
+})();
+
+/* ————— Audio players ————— */
+(function () {
+  const players = document.querySelectorAll('.player');
+  let current = null;
+
+  const PLAY = '<path d="M8 5v14l11-7z"/>';
+  const PAUSE = '<path d="M6 5h4v14H6zM14 5h4v14h-4z"/>';
+
+  function fmt(s) {
+    if (!isFinite(s)) return '–:–';
+    const m = Math.floor(s / 60), r = Math.floor(s % 60);
+    return m + ':' + String(r).padStart(2, '0');
+  }
+
+  players.forEach(p => {
+    const btn = p.querySelector('button');
+    const fill = p.querySelector('.fill');
+    const bar = p.querySelector('.bar');
+    const time = p.querySelector('.time');
+    let audio = null;
+
+    function ensureAudio() {
+      if (audio) return audio;
+      audio = new Audio(p.dataset.src);
+      audio.preload = 'metadata';
+      audio.addEventListener('loadedmetadata', () => { time.textContent = fmt(audio.duration); });
+      audio.addEventListener('timeupdate', () => {
+        if (audio.duration) fill.style.width = (audio.currentTime / audio.duration * 100) + '%';
+        time.textContent = fmt(audio.duration - audio.currentTime);
+      });
+      audio.addEventListener('ended', () => {
+        btn.querySelector('svg').innerHTML = PLAY;
+        fill.style.width = '0%';
+        time.textContent = fmt(audio.duration);
+      });
+      return audio;
+    }
+
+    btn.addEventListener('click', () => {
+      const a = ensureAudio();
+      if (a.paused) {
+        if (current && current !== a) {
+          current.pause();
+          document.querySelectorAll('.player svg').forEach(s => s.innerHTML = PLAY);
+        }
+        a.play();
+        current = a;
+        btn.querySelector('svg').innerHTML = PAUSE;
+      } else {
+        a.pause();
+        btn.querySelector('svg').innerHTML = PLAY;
+      }
+    });
+
+    bar.addEventListener('pointerdown', e => {
+      const a = ensureAudio();
+      if (!a.duration) return;
+      const r = bar.getBoundingClientRect();
+      a.currentTime = Math.max(0, Math.min(1, (e.clientX - r.left) / r.width)) * a.duration;
+    });
+  });
+})();
+
+/* ————— Install as app ————— */
+(function () {
+  const btn = document.getElementById('install-btn');
+  const tip = document.getElementById('install-tip');
+  const standalone = matchMedia('(display-mode: standalone)').matches
+    || navigator.standalone === true;
+  if (standalone) return;
+
+  const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent) ||
+    (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+
+  tip.innerHTML = isIOS
+    ? '<b>Auf dem iPhone / iPad:</b> unten in Safari den <span class="share">⇧</span> ' +
+      'Teilen-Button antippen, runterscrollen und <b>„Zum Home-Bildschirm“</b> wählen. ' +
+      'Der Guide öffnet sich dann als Vollbild-App — ohne Browserleisten, offline.'
+    : '<b>Auf Android:</b> oben rechts in Chrome das <b>⋮-Menü</b> antippen und ' +
+      '<b>„Zum Startbildschirm hinzufügen“</b> → <b>„Installieren“</b> wählen. ' +
+      '(Samsung Internet: Menü → „Seite hinzufügen zu“ → „Startbildschirm“.) ' +
+      'Der Guide öffnet sich dann als Vollbild-App — ohne Browserleisten, offline.';
+
+  btn.hidden = false;
+
+  let deferredPrompt = null;
+  window.addEventListener('beforeinstallprompt', e => {
+    e.preventDefault();
+    deferredPrompt = e;
+  });
+
+  btn.addEventListener('click', async () => {
+    if (deferredPrompt) {
+      tip.hidden = true;
+      const promptEvent = deferredPrompt;
+      deferredPrompt = null;
+      promptEvent.prompt();
+      const { outcome } = await promptEvent.userChoice;
+      if (outcome === 'accepted') btn.hidden = true;
+    } else {
+      tip.hidden = !tip.hidden;
+    }
+  });
+
+  window.addEventListener('appinstalled', () => {
+    btn.hidden = true;
+    tip.hidden = true;
+  });
+})();
+
+/* ————— Editable note, saved locally ————— */
+(function () {
+  const el = document.getElementById('meet');
+  const KEY = 'bad-kreuznach-walk-note';
+  el.textContent = localStorage.getItem(KEY) || '';
+  el.addEventListener('input', () => localStorage.setItem(KEY, el.textContent));
+})();
+</script>
+</body>
+</html>
