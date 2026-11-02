@@ -4,7 +4,7 @@ Aufruf (aus dem Repo-Root):  python tools/build.py"""
 import json, os, sys
 from urllib.parse import quote_plus
 sys.path.insert(0, os.path.dirname(__file__))
-from content import STOPS, HOME, EATS, EATS_INTRO, SITE_URL, REPO_URL, VERSION
+from content import STOPS, HOME, EATS, EATS_INTRO, MORE, MORE_INTRO, SITE_URL, REPO_URL, VERSION
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PIN = '<svg viewBox="0 0 24 24"><path d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>'
@@ -108,16 +108,21 @@ def svg_map():
     return "\n      ".join(out), 60 + 115 * (rows - 1) + 60
 
 
-def eats_html():
-    parts = [f'<p class="eats-intro">{EATS_INTRO}</p>']
-    for g in EATS:
+def list_html(intro, groups):
+    """Gruppierte Liste (Pausen & Essen, Weitere Ziele); Maps-Button nur bei Ortsangabe."""
+    parts = [f'<p class="eats-intro">{intro}</p>']
+    for g in groups:
         parts.append(f'<h3 class="eats-group">{g["group"]}</h3>')
         for it in g["items"]:
-            url = maps_url(it.get("lat"), it.get("lon"), it.get("query"))
+            has_loc = it.get("lat") is not None or it.get("query")
+            btn = ""
+            if has_loc:
+                url = maps_url(it.get("lat"), it.get("lon"), it.get("query"))
+                btn = (f'<a class="eat-map" href="{url}" target="_blank" rel="noopener" '
+                       f'aria-label="{it["name"]} in Google Maps">{PIN}</a>')
             parts.append(
                 f'<div class="eat"><div><b>{it["name"]}</b><span class="where">{it["where"]}</span>'
-                f'<p>{it["note"]}</p></div>'
-                f'<a class="eat-map" href="{url}" target="_blank" rel="noopener" aria-label="{it["name"]} in Google Maps">{PIN}</a></div>')
+                f'<p>{it["note"]}</p></div>{btn}</div>')
     return "\n      ".join(parts)
 
 
@@ -126,7 +131,8 @@ def build_html():
     route = "\n".join(card(s) for s in STOPS) + "\n" + home_card()
     svg, height = svg_map()
     return (tpl.replace("{{ROUTE}}", route).replace("{{MAP}}", svg).replace("{{MAPH}}", str(height))
-               .replace("{{EATS}}", eats_html())
+               .replace("{{EATS}}", list_html(EATS_INTRO, EATS))
+               .replace("{{MORE}}", list_html(MORE_INTRO, MORE))
                .replace("{{VERSION}}", VERSION).replace("{{REPO}}", REPO_URL))
 
 

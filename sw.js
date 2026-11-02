@@ -3,7 +3,7 @@
    and answers HTTP Range requests from cache (required for
    audio playback on iOS Safari while offline). */
 
-const CACHE_NAME = 'bad-kreuznach-walk-v2';
+const CACHE_NAME = 'bad-kreuznach-walk-v3';
 
 const ASSETS = [
   './',

@@ -4,7 +4,7 @@
 
 SITE_URL = "https://frankjmueller.github.io/bad-kreuznach-city-walk/"
 REPO_URL = "https://github.com/frankjmueller/bad-kreuznach-city-walk"
-VERSION = "v2"
+VERSION = "v3"
 
 # kind: start | stop | bonus
 # bead: Beschriftung der Perle, map: Kurzname für die Karte (Liste = mehrere Zeilen)
@@ -323,16 +323,25 @@ STOPS = [
         walk="ca. 5 min vom Eiermarkt — aber bergauf. Lass dir Zeit.",
         body=[
             "Die Burgruine liegt auf dem Kauzenberg über der Altstadt und bietet "
-            "<b>Blicke über das Nahetal</b>. Der Weg hinauf ist steil; wenn dir nicht danach ist, "
-            "ist der Blick von der Brücke auch schon schön.",
+            "<b>Blicke über das Nahetal</b>. 1689 wurde die Burg von den Franzosen geschleift. "
+            "Der Weg hinauf ist steil; wenn dir nicht danach ist, ist der Blick von der Brücke auch schon schön.",
+            "Für Wanderfreudige: Der <b>Panoramaweg</b> beginnt an der <b>Klappergasse</b> am Ende der Alten "
+            "Nahebrücke und führt hoch über den Dächern des Kurgebiets durch die Weinberge — plötzlich Stille und "
+            "Weite. Am <b>Teetempel</b> hast du einen fotogenen Rundblick; über einen Treppenweg kommst du "
+            "wieder hinunter an die Nahe.",
         ],
-        boxes=[],
+        boxes=[("tip", "<b>Nur bei guter Tagesform:</b> Der Panoramaweg hat Steigungen und Treppen. "
+                       "Für heute reicht auch ein Blick von unten.")],
         moment=None,
         audio=dict(file="kauzenburg", label="Der Blick von oben",
                    text="Die Kauzenburg liegt als Burgruine auf dem Kauzenberg, direkt über der Altstadt. "
                         "Von oben hast du einen weiten Blick über das Nahetal. "
+                        "Sechzehnhundertneunundachtzig wurde die Burg von den Franzosen zerstört. "
                         "Der Weg hinauf ist steil. Geh nur, wenn dir danach ist, "
                         "und mach unterwegs so viele Pausen, wie du brauchst. "
+                        "Wer mehr Lust auf Wandern hat, kann am Ende der Alten Nahebrücke dem Panoramaweg folgen, "
+                        "durch die Weinberge bis zum Teetempel mit seinem Rundblick, "
+                        "und über einen Treppenweg wieder zur Nahe hinuntergehen. "
                         "Wenn nicht, ist der Blick von der Brücke auch schon sehr schön."),
         lat=49.8447, lon=7.8547, maps="Kauzenburg in Google Maps",
     ),
@@ -386,5 +395,82 @@ EATS = [
              note="Moderne, saisonale Küche mit großer Terrasse. Mo–Sa ab 17 Uhr, So & Feiertage ab 12 Uhr. "
                   "Reservierung bitte telefonisch: <a href=\"tel:+4967192005665\">0671 92 00 56 65</a>.",
              query="Restaurant AUSZEIT Salinental Bad Kreuznach"),
+    ]),
+]
+
+
+# Weitere Ziele & Geschichten — Quellen: Tourist-Information Bad Kreuznach, Wikivoyage (Stand Jul. 2024 bzw. 2026).
+# Einträge ohne lat/lon/query bekommen keinen Maps-Button.
+MORE_INTRO = ("Für Tage mit mehr Energie, schlechtes Wetter oder einfach zum Schmökern. "
+              "Angaben nach Tourist-Information und Wikivoyage — <b>Zeiten und Preise bitte vorher prüfen</b>.")
+MORE = [
+    dict(group="🚆 Ausflug: Bad Münster am Stein", items=[
+        dict(name="Anreise", where="ca. 5 km flussaufwärts",
+             note="Regionalzug oder Bus 201, laut Wikivoyage etwa alle 30 Minuten. Ein schöner Ausflug "
+                  "für einen Tag mit viel Energie — oder mit dem Taxi."),
+        dict(name="Rheingrafenstein", where="Burgruine mit Aussichtsplattform",
+             note="Die Burg wurde 1689 von Truppen Ludwigs XIV. zerstört. Erhalten sind Teile der Ringmauer und "
+                  "Treppen; von der Plattform blickst du ins Nahetal, auf Bad Münster und hinüber zur Ebernburg.",
+             query="Rheingrafenstein Bad Münster am Stein"),
+        dict(name="Handgezogene Fähre", where="Nahepromenade · Ostern bis Anfang November",
+             note="Laut Wikivoyage die einzige handgezogene Fähre Süddeutschlands. Sie setzt über ins Huttental "
+                  "(zuletzt 1,50 € pro Erwachsenem).",
+             query="Hajos Fähre Bad Münster am Stein"),
+        dict(name="Ebernburg &amp; Huttental", where="Burg über dem Kurort",
+             note="Der Reichsritter Franz von Sickingen gewährte hier Anhängern Luthers Schutz, darunter dem Dichter "
+                  "Ulrich von Hutten — daher der Name Huttental. Von hier ging die Reformation westlich des Rheins aus.",
+             query="Ebernburg Bad Münster am Stein"),
+        dict(name="Rotenfels", where="Felswand bei Bad Münster",
+             note="Mit 327 Metern laut Wikivoyage die höchste Steilwand zwischen Alpen und Skandinavien — "
+                  "ein Blick von unten genügt völlig.",
+             query="Rotenfels Bad Münster am Stein"),
+        dict(name="Naturstation im Kurmittelhaus", where="Bad Münster · Schlechtwetter-Tipp",
+             note="Ausstellung heimischer Schlangen, Echsen, Frösche, Kröten und Molche in Terrarien.",
+             query="Naturstation Kurmittelhaus Bad Münster am Stein"),
+    ]),
+    dict(group="🏛️ Museen — gut bei Regen", items=[
+        dict(name="Museum für PuppentheaterKultur", where="Hüffelsheimer Str. 11 · beim Römerhalle-Bonus",
+             note="2.500 Exponate, vom Fliewatüüt bis Käpt'n Blaubär und Hein Blöd, dazu ein Museumstheater. "
+                  "Laut Wikivoyage Di 10–13, Mi–Fr 10–16, Sa/So 11–17 Uhr.",
+             lat=49.8457, lon=7.8469),
+        dict(name="Schlossparkmuseum", where="Dessauerstraße 49",
+             note="Ein Wasserschloss, das Prinzessin Amalie von Anhalt-Dessau 1768 als Ruine erwarb; "
+                  "Carl Puricelli ließ 1881 ein Jagdzimmer einbauen. Stadtgeschichte, Glaskunst und Werke der "
+                  "Bildhauerdynastie Cauer. Zeiten wie die anderen Museen im Kulturviertel; im Februar geschlossen.",
+             query="Schlossparkmuseum Bad Kreuznach Dessauerstraße 49"),
+        dict(name="Nikolauskirche — das „Hungertuch“", where="am Eiermarkt · Stop 8",
+             note="Das große Fastentuch zeigt biblische Szenen und Allegorien auf Glaube, Liebe, Hoffnung und "
+                  "Gerechtigkeit. Es verhüllte in der Fastenzeit Kreuze, Altäre und Bilder."),
+    ]),
+    dict(group="💧 Kur-Geschichte zum Erleben", items=[
+        dict(name="Crucenia-Therme", where="Kurhausstr. 26",
+             note="Thermal-Solebad, laut Wikivoyage täglich 8–21 Uhr; 4 Stunden kosteten zuletzt 9,50 € (Stand 2024).",
+             query="Crucenia Therme Bad Kreuznach"),
+        dict(name="Radon-Heilstollen", where="Kurtradition seit 1912",
+             note="1904 entdeckte der Apotheker Karl Aschoff den Radongehalt der Quellen, 1912 öffnete der "
+                  "Heilstollen, der bis heute genutzt wird. Eine Anwendung ist Sache für den Arzt — "
+                  "als Geschichte ist sie trotzdem spannend.",
+             query="Radon-Heilstollen Bad Kreuznach"),
+    ]),
+    dict(group="📅 Durchs Jahr", items=[
+        dict(name="Kirschblüte auf der Roseninsel", where="Frühling",
+             note="Die Tokio-Kirschen auf dem Damm blühen im Frühling."),
+        dict(name="Konzerte im Kurpark", where="Musikpavillon · Open-Air-Saison",
+             note="In der Saison wird im Musikpavillon kostenlos gespielt, die Tanzfläche liegt unter den Platanen."),
+        dict(name="Fischerstechen", where="Roseninsel · Ende August / Anfang September",
+             note="Das traditionelle Wasserturnier auf der Nahe."),
+        dict(name="Wochenmarkt", where="Kornmarkt / Mannheimer Straße · Di und Fr 7–13 Uhr",
+             note="Rund 40 Stände mit frischen, regionalen Produkten — laut Wikivoyage unbedingt probieren: Traubenkernöl.",
+             lat=49.8440728, lon=7.8586494),
+        dict(name="Nikolausmarkt", where="Eiermarkt · im Advent",
+             note="Der Weihnachtsmarkt rund um die Nikolauskirche trägt den Namen des Kirchenpatrons."),
+        dict(name="Nahe-Wein-Vinothek", where="Mannheimer Str. 6 · im Dienheimer Hof",
+             note="Ein Schaufenster für die Weine des Nahetals in einem Adelshof mit Renaissance-Erker. "
+                  "Zuletzt gab es eine Dreier-Probe mit Flammkuchen für 17,50 € (Stand 2024).",
+             query="Nahe-Wein-Vinothek Dienheimer Hof Mannheimer Straße 6 Bad Kreuznach"),
+        dict(name="Freitags um 15:30 Uhr", where="Tourist-Information im Haus des Gastes, Kurhausstr. 22–24",
+             note="Laut Wikivoyage lädt die Tourist-Information freitags bei einem Glas Nahewein dazu ein, "
+                  "Bad Kreuznach kennenzulernen. Bitte vorher nachfragen, ob das Angebot noch läuft.",
+             lat=49.842278, lon=7.85362),
     ]),
 ]
